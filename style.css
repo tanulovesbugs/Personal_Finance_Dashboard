@@ -24,6 +24,8 @@ body {
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
+    overflow-x: hidden; /* This fixes the horizontal scrolling issue */
+    overflow-y: auto; /* This allows vertical scrolling only when needed */
 }
 
 /* Animated background with elements */
