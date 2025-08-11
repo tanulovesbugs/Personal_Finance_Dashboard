@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Dashboard</title>
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <!-- Main Heading -->
+        <h1>Personal Finance Dashboard</h1>
+
+        <!-- Summary Cards -->
+        <div class="dashboard-summary">
+            <div class="summary-card income">
+                <h2>Total Income</h2>
+                <p id="totalIncome">$0.00</p>
+            </div>
+            <div class="summary-card expense">
+                <h2>Total Expenses</h2>
+                <p id="totalExpenses">$0.00</p>
+            </div>
+            <div class="summary-card">
+                <h2>Net Balance</h2>
+                <p id="netBalance">$0.00</p>
+            </div>
+        </div>
+
+        <!-- Transaction Form -->
+        <div class="transaction-form">
+            <h2>Add New Transaction</h2>
+            <form id="transactionForm">
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" placeholder="e.g., Salary, Groceries" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" placeholder="e.g., 500" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <select id="type">
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                </div>
+                <button type="submit">Add Transaction</button>
+            </form>
+        </div>
+
+        <!-- Transaction List -->
+        <div class="transaction-list-container">
+            <h2>Recent Transactions</h2>
+            <ul id="transactionList" class="transaction-list">
+                <!-- Transaction items will be dynamically added here -->
+            </ul>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-section">
+            <h2>Spending Breakdown</h2>
+            <div class="chart-container">
+                <canvas id="financeChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart.js CDN for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

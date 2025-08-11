@@ -1,0 +1,275 @@
+/* Global Styles and Theme */
+:root {
+    --bg-color: #0d1117;
+    --card-bg: #161b22;
+    --text-color: #e6e6e6;
+    --primary-color: #56aaff;
+    --income-color: #4CAF50;
+    --expense-color: #F44336;
+    --border-color: #30363d;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --neon-blue: #00ffff;
+    --neon-red: #ff0077;
+    --neon-green: #00ff7f;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative; /* Needed for the pseudo-element */
+    background-color: var(--bg-color); /* Fallback background color */
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* Animated background with elements */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    filter: blur(50px);
+}
+
+body::before {
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(90, 170, 255, 0.2) 0%, rgba(22, 27, 34, 0) 60%);
+    animation: background-elements 25s linear infinite;
+}
+
+body::after {
+    top: 100%;
+    left: 100%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, rgba(22, 27, 34, 0) 60%);
+    animation: background-elements-alt 30s linear infinite;
+}
+
+/* Main Container and Layout */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Dashboard Overview */
+.dashboard-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.summary-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pulse 2s infinite ease-in-out; /* Added pulse animation */
+}
+
+.summary-card:hover {
+    transform: translateY(-5px) scale(1.05); /* Added scale on hover */
+    box-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue); /* Neon glow effect */
+}
+
+.summary-card h2 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.summary-card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.summary-card.income p { color: var(--income-color); }
+.summary-card.expense p { color: var(--expense-color); }
+
+/* Form and Transactions Section */
+.transaction-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.transaction-form, .transaction-list-container, .chart-section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.transaction-form h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px var(--neon-blue); /* Neon focus effect */
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #4a90e2;
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue); /* Neon glow for button */
+}
+
+.transaction-list-container h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.transaction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.transaction-item:hover {
+    background-color: #21262d;
+    transform: translateX(5px);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-item .description {
+    font-weight: bold;
+}
+
+.transaction-item .amount.income {
+    color: var(--income-color);
+}
+
+.transaction-item .amount.expense {
+    color: var(--expense-color);
+}
+
+/* Chart Section */
+.chart-section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.chart-section h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+}
+
+/* Keyframes for animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+    100% { transform: scale(1); }
+}
+
+@keyframes background-elements {
+    0% { transform: rotate(0deg) translate(-25%, -25%); }
+    100% { transform: rotate(360deg) translate(25%, 25%); }
+}
+
+@keyframes background-elements-alt {
+    0% { transform: rotate(0deg) translate(-50%, -50%); }
+    100% { transform: rotate(360deg) translate(50%, 50%); }
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .dashboard-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        grid-template-rows: auto 1fr;
+    }
+    .transaction-section {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .transaction-form {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    .chart-section {
+        grid-column: 1 / 3;
+        grid-row: 1;
+    }
+}
