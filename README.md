@@ -3,7 +3,7 @@ A simple and modern web application for tracking your personal finances. This da
 
 Live Demo
 You can view a live demo of the application here:
-https://vercel.com/tannu-kumaris-projects-b0a55f73/personal-finance-dashboard
+[https://vercel.com/tannu-kumaris-projects-b0a55f73/personal-finance-dashboard](https://personal-finance-dashboard-iota.vercel.app/)
 
 Features
 Transaction Tracking: Easily add new income and expense entries.
